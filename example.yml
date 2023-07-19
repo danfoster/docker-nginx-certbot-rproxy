@@ -1,0 +1,5 @@
+host: test1.zem.org.uk
+ssl: true
+proxies:
+ - path: /
+   target: https://example.com
