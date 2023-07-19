@@ -23,9 +23,11 @@ proxies:
 
 The following environment  variables are mandatory:
 
- * `EMAIL`: The e-mail address used to register with the ACME server for lets encrypt certificates
+* `EMAIL`: The e-mail address used to register with the ACME server for lets encrypt certificates
 
+The following environnement variable are optional:
 
+* `TEST_CERT`: If this var is set, certbot will use the letsencrypt staging ACME servers
 
 ## Usage
 
@@ -37,7 +39,7 @@ The following mounts/volumes are expected:
 ### Docker
 
 ```
-docker run -v $HOME/config:/config -v $HOME/le:/etc/letsencrypt -p 80:80 -p 443:443 -e EMAIL=you@example.com nginx-certbot-rproxy
+docker run -v $HOME/config:/config -v $HOME/le:/etc/letsencrypt -p 80:80 -p 443:443 -e EMAIL=you@example.com danfosteer/nginx-certbot-rproxy
 ```
 
 ### docker-compose
@@ -45,7 +47,7 @@ docker run -v $HOME/config:/config -v $HOME/le:/etc/letsencrypt -p 80:80 -p 443:
 ```
 services:
   web: 
-    image: nginx-certbot-rproxy
+    image: danfoster/nginx-certbot-rproxy
     ports:
       - 80:80
       - 443:443
